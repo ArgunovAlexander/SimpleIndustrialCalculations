@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Кислородный калькулятор</string>
+    <string name="find_oxy_flow">Найти расход О2 </string>
+    <string name="find_oxy_conc">Найти содержание О2 в дутье</string>
+
+    <string name="enter_oxyConc">Введите содержание кислорода в дутье, % </string>
+    <string name="enter_air_flow">Введите расход доменного дутья, тыс.м3/ч </string>
+    <string name="enter_oxy_in_air_conc">Введите содержание воздуха в атмосферном воздухе, % </string>
+    <string name="enter_oxy_purity">Введите содержание кислорода в кислороде (чистоту), % </string>
+
+
+    <string name="air_conc_by_default">22</string>
+    <string name="air_flow_by_default">200</string>
+    <string name="oxy_in_air_conc_by_default">20.7</string>
+    <string name="oxy_purity_by_default">99.5</string>
+    <string name="answer_by_default">Тут будет ответ</string>
+
+
+    <string name="oxy_flow">Расход кислорода = </string>
+    <string name="air_flow">Расход доменного дутья </string>
+    <string name="enrich_air_oxy_conc">Содержание кислорода в дутье </string>
+    <string name="message">Вы забыли ввести данные. Введите данные. Допускаются цифры и точка</string>
+    <string name="oxy_conc_dp">Содержание кислорода в дутье по прибору на ДП</string>
+    <string name="find_air_dissipation">Рассчитать потери воздуха (СНОРТ, утечки и т.п.)</string>
+
+    <string name="find_detailed">Уточнить расчет</string>
+
+    <string name="intro">Объемная концентрация кислорода в воздухе незначительно
+        колеблется. Локальные изменения содержания О2 происходят в местах крупных пожаров,
+        в местах забора воздуха крупными промпредприятиями и т.п.
+        \n\nЧистота технического кислорода должна быть не менее 99,5%, технологического - 95%</string>
+    <string name="intro_detailed">При сжатии воздуха часть его теряется в компрессоре
+        и по воздуховоду, часть - на клапанах СНОРТ, ППК и т.п.
+        Кислород добавляется в воздух на всасе компрессора, т.е. разбавляется большим количеством
+        воздуха, чем получает доменная печь. По этой причине содержание кислорода на печи меньше
+        расчетного.
+     </string>
+</resources>

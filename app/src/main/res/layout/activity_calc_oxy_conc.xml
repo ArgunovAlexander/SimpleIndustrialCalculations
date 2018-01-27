@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context=".CalcOxyConc">
+
+    <!--find oxygen flow-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:text="Введите расход кислорода" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <TextView
+
+            android:id="@+id/decrOxyFlow"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:text="-"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:background="#e0e0e0"
+            android:visibility="visible"
+            android:textAlignment="center"
+
+            />
+        <EditText
+            android:id="@+id/inputOxyFlow"
+            android:text=""
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:inputType="numberDecimal"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        />
+        <TextView
+            android:id="@+id/incrOxyFlow"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:background="#e0e0e0"
+            android:visibility="visible"
+            android:textAlignment="center"
+            android:padding="8dp"
+            android:text="+"
+            />
+        <TextView
+            android:id="@+id/toDefaultOxyFlow"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:padding="8dp"
+            android:text="сбросить"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:background="#e0e0e0"
+            android:visibility="visible"
+            android:textAlignment="center"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/warning_oxyFlow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text=""
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:text="@string/enter_air_flow" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+
+            android:id="@+id/decrAirFlow"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:text="-"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:background="#e0e0e0"
+            android:visibility="visible"
+            android:textAlignment="center"
+            />
+        <EditText
+            android:id="@+id/inputAirFlow"
+            android:text=""
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:inputType="numberDecimal"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            />
+        <TextView
+            android:id="@+id/incrAirFlow"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:background="#e0e0e0"
+            android:visibility="visible"
+            android:textAlignment="center"
+            android:padding="8dp"
+            android:text="+"
+            />
+        <TextView
+            android:id="@+id/toDefaultAirFlow"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:padding="8dp"
+            android:text="сбросить"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:background="#e0e0e0"
+            android:visibility="visible"
+            android:textAlignment="center"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/warning_airFlow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text=""
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        />
+
+
+
+
+
+    <TextView
+        android:id="@+id/onCalcOxyConc"
+        android:text="@string/find_oxy_conc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:padding="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:background="#e0e0e0"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/onCalcMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:padding="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:background="#e0e0e0"
+        android:visibility="visible"
+        android:text="Найти потери дутья"
+        />
+    <TextView
+        android:id="@+id/outputData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textAllCaps="true"
+        android:text=""
+        android:background="#e0e0e0"
+        android:layout_marginTop="24dp"
+        android:textColor="#000000"
+        />
+</LinearLayout>
