@@ -9,16 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuActivity">
+
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CalcOxyFlow" />
-        <activity android:name=".CalcOxyConc" />
-        <activity android:name=".DetailedSolution"></activity>
+
+        <activity android:name=".MenuActivity" android:label="@string/choose_action"/>
+        <activity android:name=".CalcOxyFlow" android:label="@string/oxy_flow"/>
+        <activity android:name=".CalcOxyConc" android:label="@string/oxy_conc"/>
+        <activity android:name=".DetailedSolution" android:label="@string/air_loss"/>
     </application>
 
 </manifest>

@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Кислородный калькулятор</string>
+    <string name="choose_action">Выбор расчета</string>
+    <string name="oxy_flow">Расход кислорода </string>
+    <string name="oxy_conc">Концентрация кислорода </string>
+    <string name="air_loss">Потери дутья </string>
+
     <string name="find_oxy_flow">Найти расход О2 </string>
     <string name="find_oxy_conc">Найти содержание О2 в дутье</string>
 
@@ -16,7 +21,6 @@
     <string name="answer_by_default">Тут будет ответ</string>
 
 
-    <string name="oxy_flow">Расход кислорода = </string>
     <string name="air_flow">Расход доменного дутья </string>
     <string name="enrich_air_oxy_conc">Содержание кислорода в дутье </string>
     <string name="message">Вы забыли ввести данные. Введите данные. Допускаются цифры и точка</string>
