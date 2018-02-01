@@ -12,28 +12,14 @@ class Oxygen implements Serializable {
     private double furnaceOxyConc;
     private double airDissipation;
 
-    public void setOxyConc(double oxyConc) {
-        this.oxyConc = oxyConc;
-    }
-
-    public void setOxyFlow(double oxyFlow) {
-        this.oxyFlow = oxyFlow;
-    }
-
-    public void setOxyInAir(double oxyInAir) {
-        this.oxyInAir = oxyInAir;
-    }
-
-    public void setOxyPurity(double oxyPurity) {
-        this.oxyPurity = oxyPurity;
-    }
-
-    public void setAirFlow(double airFlow) {
-        this.airFlow = airFlow;
-    }
-
-    public void setFurnaceOxyConc(double furnaceOxyConc) {
-        this.furnaceOxyConc = furnaceOxyConc;
+    Oxygen() {
+        airFlow = 0;
+        oxyConc = 0;
+        oxyFlow = 0;
+        oxyInAir = 0;
+        oxyPurity = 0;
+        furnaceOxyConc = 0;
+        airDissipation = 0;
     }
 
     public double getAirDissipation() {
@@ -44,50 +30,64 @@ class Oxygen implements Serializable {
         return oxyConc;
     }
 
+    public void setOxyConc(double oxyConc) {
+        this.oxyConc = oxyConc;
+    }
+
     public double getOxyFlow() {
         return oxyFlow;
+    }
+
+    public void setOxyFlow(double oxyFlow) {
+        this.oxyFlow = oxyFlow;
     }
 
     public double getOxyInAir() {
         return oxyInAir;
     }
 
+    public void setOxyInAir(double oxyInAir) {
+        this.oxyInAir = oxyInAir;
+    }
+
     public double getOxyPurity() {
         return oxyPurity;
+    }
+
+    public void setOxyPurity(double oxyPurity) {
+        this.oxyPurity = oxyPurity;
     }
 
     public double getAirFlow() {
         return airFlow;
     }
 
+    public void setAirFlow(double airFlow) {
+        this.airFlow = airFlow;
+    }
+
     public double getFurnaceOxyConc() {
         return furnaceOxyConc;
     }
 
-    Oxygen(){
-        airFlow=0;
-        oxyConc=0;
-        oxyFlow=0;
-        oxyInAir=0;
-        oxyPurity=0;
-        furnaceOxyConc=0;
-        airDissipation=0;
+    public void setFurnaceOxyConc(double furnaceOxyConc) {
+        this.furnaceOxyConc = furnaceOxyConc;
     }
 
     double calcOxyFlow() {
-        oxyFlow=(airFlow*(oxyConc-oxyInAir))/(oxyPurity-oxyInAir);
+        oxyFlow = (airFlow * (oxyConc - oxyInAir)) / (oxyPurity - oxyInAir);
         return oxyFlow;
     }
 
     double calcOxyConc() {
-        double oxygenInAir=airFlow*oxyInAir/100;
-        double oxygenInOxygen=oxyFlow*oxyPurity/100;
-        oxyConc=(oxygenInAir+oxygenInOxygen)/(airFlow+oxyFlow)*100;
+        double oxygenInAir = airFlow * oxyInAir / 100;
+        double oxygenInOxygen = oxyFlow * oxyPurity / 100;
+        oxyConc = (oxygenInAir + oxygenInOxygen) / (airFlow + oxyFlow) * 100;
         return oxyConc;
     }
 
-    double calcAirDissipation () {
-        airDissipation=oxyFlow*(oxyPurity-oxyInAir)/(furnaceOxyConc-oxyInAir)-airFlow;
+    double calcAirDissipation() {
+        airDissipation = oxyFlow * (oxyPurity - oxyInAir) / (furnaceOxyConc - oxyInAir) - airFlow;
         return airDissipation;
     }
 }

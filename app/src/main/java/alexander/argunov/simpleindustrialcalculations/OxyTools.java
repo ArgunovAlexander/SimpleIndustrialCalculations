@@ -1,9 +1,6 @@
 package alexander.argunov.simpleindustrialcalculations;
 
-/**
- * Created by user on 26.01.2018.
- */
-
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -22,6 +19,7 @@ public class OxyTools {
 
     static boolean isCorrect(double value, double min, double max, TextView textView) {
         if (value<min||value>max) {
+            textView.setVisibility(View.VISIBLE);
             textView.setText(format(Locale.US,"Введите число между %1$.1f и %2$.1f ",min,max));
             return false;
         }
@@ -31,5 +29,22 @@ public class OxyTools {
     static void printParam(TextView textView, String formattedMessage, double param){
         String message=format(Locale.US,formattedMessage, param);
         textView.setText(message);
+    }
+
+    static String printParam(String formattedMessage, double param) {
+        return (param != 0) ? String.format(Locale.US, formattedMessage, param) + "\n" : "";
+    }
+
+    static String oxyMessage(Oxygen o) {
+        String message = "";
+        message += printParam("Расход дутья %.0f тыс.м3/ч", o.getAirFlow());
+        message += printParam("Расход O2 %.1f тыс.м3/ч", o.getOxyFlow());
+        message += printParam("Содержание O2 в дутье (расч) %.1f %%", o.getOxyConc());
+        message += printParam("Содержание O2 в дутье (ДП) %.1f %%", o.getFurnaceOxyConc());
+        message += printParam("Потери дутья %.0f тыс.м3/ч", o.getAirDissipation());
+        message += printParam("Содержание О2 в атмосфере %.1f %%", o.getOxyInAir());
+        message += printParam("Чистота O2 %.1f %%", o.getOxyPurity());
+
+        return message;
     }
 }

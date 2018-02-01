@@ -4,9 +4,15 @@
     <string name="oxy_flow">Расход кислорода </string>
     <string name="oxy_conc">Концентрация кислорода </string>
     <string name="air_loss">Потери дутья </string>
+    <string name="result">Результат </string>
 
-    <string name="find_oxy_flow">Найти расход О2 </string>
-    <string name="find_oxy_conc">Найти содержание О2 в дутье</string>
+    <string name="chooser">Выберите почтовую программу</string>
+    <string name="subject">Параметры дутья по ДП-</string>
+
+
+    <string name="find_oxy_flow">Рассчитать расход О2 </string>
+    <string name="find_oxy_conc">Рассчитать содержание О2 </string>
+    <string name="find_air_dissipation">Рассчитать потери дутья </string>
 
     <string name="enter_oxyConc">Введите содержание кислорода в дутье, % </string>
     <string name="enter_air_flow">Введите расход доменного дутья, тыс.м3/ч </string>
@@ -25,7 +31,6 @@
     <string name="enrich_air_oxy_conc">Содержание кислорода в дутье </string>
     <string name="message">Вы забыли ввести данные. Введите данные. Допускаются цифры и точка</string>
     <string name="oxy_conc_dp">Содержание кислорода в дутье по прибору на ДП</string>
-    <string name="find_air_dissipation">Рассчитать потери воздуха (СНОРТ, утечки и т.п.)</string>
 
     <string name="find_detailed">Уточнить расчет</string>
 
@@ -39,4 +44,5 @@
         воздуха, чем получает доменная печь. По этой причине содержание кислорода на печи меньше
         расчетного.
      </string>
+
 </resources>
