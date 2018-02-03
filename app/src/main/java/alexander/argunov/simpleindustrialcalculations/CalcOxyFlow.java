@@ -22,8 +22,6 @@ public class CalcOxyFlow extends AppCompatActivity {
     EditText inputOxyConc;
     EditText inputAirFlow;
 
-    //output textview field
-    TextView outputData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +30,6 @@ public class CalcOxyFlow extends AppCompatActivity {
         //input and output views
         inputOxyConc = findViewById(R.id.inputOxyConc);
         inputAirFlow = findViewById(R.id.inputAirFlow);
-        outputData = findViewById(R.id.outputData);
 
         //group of + - buttons to perform steper input
         TextView incrOxyPer=findViewById(R.id.incrOxyPer);
@@ -48,8 +45,8 @@ public class CalcOxyFlow extends AppCompatActivity {
         TextView toDefaultAirFlow=findViewById(R.id.toDefaultAirFlow);
 
         //set default values
-        String oxyConcByDefault="22";
-        String airFlowByDefault="200";
+        String oxyConcByDefault = getString(R.string.oxy_conc_by_default);
+        String airFlowByDefault = getString(R.string.air_flow_by_default);
         inputOxyConc.setText(oxyConcByDefault);
         inputAirFlow.setText(airFlowByDefault);
 
@@ -69,8 +66,6 @@ public class CalcOxyFlow extends AppCompatActivity {
 
 
         onCalcOxyFlow.setOnClickListener(new ButtonListener(this, Answer.class));
-
-        //o=(Oxygen) getIntent().getSerializableExtra("OxygenObject");
 
     }
 
@@ -131,20 +126,15 @@ public class CalcOxyFlow extends AppCompatActivity {
             warningOxyConc.setText("");
             warningAirFlow.setText("");
             o = (Oxygen) getIntent().getSerializableExtra("OxygenObject");
-            double oxyInAir = o.getOxyInAir();
-            double oxyPurity = o.getOxyPurity();
             double oxyConc = OxyTools.setParam(inputOxyConc);
             double airFlow = OxyTools.setParam(inputAirFlow);
-            if (OxyTools.isCorrect(oxyConc, oxyInAir, oxyPurity, warningOxyConc)
+            if (OxyTools.isCorrect(oxyConc, o.getOxyInAir(), o.getOxyPurity(), warningOxyConc)
                     && OxyTools.isCorrect(airFlow, 100, 300, warningAirFlow)) {
                 o.setOxyConc(oxyConc);
                 o.setAirFlow(airFlow);
-                //OxyTools.printParam(outputData, "Расход О2 = %.1f тыс.м3/ч",
-                //       o.calcOxyFlow());
                 o.calcOxyFlow();
                 Intent intent = new Intent(packageContext, cls);
                 intent.putExtra("oxygenObjectTwo", o);
-                System.out.println(o.getOxyPurity() + "-------------------------------------");
                 startActivity(intent);
             }
         }

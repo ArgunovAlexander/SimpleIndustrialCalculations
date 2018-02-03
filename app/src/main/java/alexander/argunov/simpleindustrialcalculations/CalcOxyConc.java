@@ -2,16 +2,17 @@ package alexander.argunov.simpleindustrialcalculations;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
+
+import java.util.Locale;
 
 import static java.lang.String.format;
-import java.util.Locale;
 
 public class CalcOxyConc extends AppCompatActivity {
     Oxygen o;
@@ -28,8 +29,7 @@ public class CalcOxyConc extends AppCompatActivity {
 
         //calculate button
         TextView onCalcOxyConc =  findViewById(R.id.onCalcOxyConc);
-        final TextView onCalcMore=    findViewById(R.id.onCalcMore);
-        onCalcMore.setEnabled(false);
+
 
         //group of to default buttons
         TextView toDefaultOxyFlow=findViewById(R.id.toDefaultOxyFlow);
@@ -39,12 +39,9 @@ public class CalcOxyConc extends AppCompatActivity {
         final EditText inputOxyFlow =  findViewById(R.id.inputOxyFlow);
         final EditText inputAirFlow =  findViewById(R.id.inputAirFlow);
 
-        //output textview field
-        final TextView outputData =  findViewById(R.id.outputData);
-
         //set default values
-        String oxyFlowByDefault="3";
-        String airFlowByDefault="200";
+        String oxyFlowByDefault = getString(R.string.oxy_flow_by_default);
+        String airFlowByDefault = getString(R.string.air_flow_by_default);
         inputOxyFlow.setText(oxyFlowByDefault);
         inputAirFlow.setText(airFlowByDefault);
 
@@ -58,7 +55,7 @@ public class CalcOxyConc extends AppCompatActivity {
         toDefaultOxyFlow.setOnClickListener(new ToDefaultListener(inputOxyFlow,oxyFlowByDefault));
         toDefaultAirFlow.setOnClickListener(new ToDefaultListener(inputAirFlow,airFlowByDefault));
 
-        final Intent intent = new Intent(this, DetailedSolution.class);
+        final Intent intent = new Intent(this, Answer.class);
 
         onCalcOxyConc.setOnClickListener(new OnClickListener() {
             public void onClick (View view){
@@ -68,26 +65,28 @@ public class CalcOxyConc extends AppCompatActivity {
                 warningOxyFlow.setText("");
                 warningAirFlow.setText("");
                 o=(Oxygen) getIntent().getSerializableExtra("OxygenObject");
-                double oxyInAir = o.getOxyInAir();
-                double oxyPurity = o.getOxyPurity();
                 double oxyFlow = OxyTools.setParam(inputOxyFlow);
                 double airFlow = OxyTools.setParam(inputAirFlow);
                 if (OxyTools.isCorrect(oxyFlow,0,40,warningOxyFlow)&&OxyTools.isCorrect(airFlow,100,300,warningAirFlow)) {
                     o.setOxyFlow(oxyFlow);
                     o.setAirFlow(airFlow);
-                    OxyTools.printParam(outputData,"Содержание О2= %.1f %%", o.calcOxyConc());
-                    onCalcMore.setEnabled(true);
-
+                    o.calcOxyConc();
+                    intent.putExtra("oxygenObjectTwo", o);
+                    startActivity(intent);
                 }
             }
         });
-        onCalcMore.setOnClickListener(new OnClickListener() {
-            public void onClick(View view) {
-                intent.putExtra("OxygenObject", o);
-                startActivity(intent);
-            }
-        });
+
     }
+
+    private void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
     class StepperInputListener implements View.OnClickListener {
         EditText editText;
         double step;
@@ -107,6 +106,7 @@ public class CalcOxyConc extends AppCompatActivity {
             editText.setText(format(Locale.US,format,value));
         }
     }
+
     class ToDefaultListener implements View.OnClickListener{
         EditText editText=null;
         String value="";
@@ -116,13 +116,6 @@ public class CalcOxyConc extends AppCompatActivity {
         }
         public void onClick(View view) {
             editText.setText(value);
-        }
-    }
-    private void hideKeyboard() {
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 

@@ -23,6 +23,7 @@ public class MenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        hideKeyboard();
 
         //assigning input EditTexts to value
         inputOxyPurity = findViewById(R.id.inputOxyPurity);
@@ -41,12 +42,14 @@ public class MenuActivity extends Activity {
         //Buttons TextViews to fire Variant1 & Variant2 Activities
         TextView oxyFlow = findViewById(R.id.oxyFlow);
         TextView oxyConc = findViewById(R.id.oxyConc);
+        TextView airLoss = findViewById(R.id.air_loss);
 
         //set default values
-        String oxyPurityByDefault = "99.5";
-        String OxyInAirByDefault = "20.7";
+        String oxyPurityByDefault = getString(R.string.oxy_purity_by_default);
+        String OxyInAirByDefault = getString(R.string.oxy_in_air_by_default);
         inputOxyPurity.setText(oxyPurityByDefault);
         inputOxyInAirPerc.setText(OxyInAirByDefault);
+
 
         incrOxyInAir.setOnClickListener(new StepperInputListener(inputOxyInAirPerc, 0.1d, "%.1f"));
         decrOxyInAir.setOnClickListener(new StepperInputListener(inputOxyInAirPerc, -0.1d, "%.1f"));
@@ -58,6 +61,7 @@ public class MenuActivity extends Activity {
 
         oxyFlow.setOnClickListener(new ButtonsListener(this, CalcOxyFlow.class));
         oxyConc.setOnClickListener(new ButtonsListener(this, CalcOxyConc.class));
+        airLoss.setOnClickListener(new ButtonsListener(this, DetailedSolution.class));
     }
 
     private void hideKeyboard() {

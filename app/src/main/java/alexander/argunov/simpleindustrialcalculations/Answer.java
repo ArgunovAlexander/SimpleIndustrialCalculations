@@ -5,7 +5,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -25,7 +27,7 @@ public class Answer extends AppCompatActivity {
         printResult("Расход дутья", String.format(Locale.US, "%.0f", o.getAirFlow()), "тыс.м3/ч");
         printResult("Расход кислорода", String.format(Locale.US, "%.1f", o.getOxyFlow()), "тыс.м3/ч");
         printResult("Концентрация кислорода в дутье", String.format(Locale.US, "%.1f", o.getOxyConc()), "%");
-        printResult("Концентрация кислорода в дутье по прибору на ДП", String.format(Locale.US, "%.0f", o.getAirDissipation()), "%");
+        printResult("Концентрация кислорода в дутье по прибору на ДП", String.format(Locale.US, "%.0f", o.getFurnaceOxyConc()), "%");
         printResult("Потери дутья", String.format(Locale.US, "%.0f", o.getAirDissipation()), "тыс.м3/ч");
         printResult("Чистота кислорода", String.format(Locale.US, "%.1f", o.getOxyPurity()), "%");
         printResult("Содержание кислорода в атмосфере", String.format(Locale.US, "%.1f", o.getOxyInAir()), "%");
@@ -36,7 +38,7 @@ public class Answer extends AppCompatActivity {
         sendButton.setLayoutParams(lpButton);
         sendButton.setPadding(convertDpToPixels(8), convertDpToPixels(8), convertDpToPixels(8), convertDpToPixels(8));
         sendButton.setAllCaps(true);
-        sendButton.setText("send");
+        sendButton.setText("Отправить результаты расчета");
         sendButton.setBackgroundColor(Color.parseColor("#e0e0e0"));
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +53,15 @@ public class Answer extends AppCompatActivity {
                 startActivity(chosenIntent);
             }
         });
-        verticalLayout.addView(sendButton);
+        sendButton.setGravity(View.TEXT_ALIGNMENT_CENTER);
+        RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        RelativeLayout relativeLayout = new RelativeLayout(this);
+        relativeLayout.setLayoutParams(rp);
+        //relativeLayout.setBackgroundColor(Color.RED);
+        relativeLayout.setGravity(RelativeLayout.CENTER_HORIZONTAL);
+        sendButton.setGravity(RelativeLayout.CENTER_HORIZONTAL);
+        relativeLayout.addView(sendButton);
+        verticalLayout.addView(relativeLayout);
     }
 
     void printResult(String textOne, String value, String textThree) {

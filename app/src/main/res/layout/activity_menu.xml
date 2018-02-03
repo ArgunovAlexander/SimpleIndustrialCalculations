@@ -17,7 +17,7 @@
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:scaleType="centerInside"
-            android:src="@drawable/result" />
+            android:src="@drawable/intro_banner" />
 
 
         <TextView
@@ -58,7 +58,6 @@
                 android:layout_height="48dp"
                 android:inputType="numberDecimal"
                 android:padding="8dp"
-                android:text="@string/oxy_in_air_conc_by_default"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -135,7 +134,6 @@
                 android:layout_width="100dp"
                 android:layout_height="48dp"
                 android:inputType="numberDecimal"
-                android:text="@string/oxy_purity_by_default"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 

@@ -1,5 +1,6 @@
 package alexander.argunov.simpleindustrialcalculations;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,16 +20,12 @@ public class OxyTools {
 
     static boolean isCorrect(double value, double min, double max, TextView textView) {
         if (value<min||value>max) {
-            textView.setVisibility(View.VISIBLE);
+            textView.setTextColor(Color.parseColor("#F44336"));
             textView.setText(format(Locale.US,"Введите число между %1$.1f и %2$.1f ",min,max));
+            textView.setVisibility(View.VISIBLE);
             return false;
         }
         return true;
-    }
-
-    static void printParam(TextView textView, String formattedMessage, double param){
-        String message=format(Locale.US,formattedMessage, param);
-        textView.setText(message);
     }
 
     static String printParam(String formattedMessage, double param) {
