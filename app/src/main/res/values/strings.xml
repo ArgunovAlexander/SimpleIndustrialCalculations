@@ -13,6 +13,8 @@
     <string name="oxy_conc_by_default" translatable="false">22</string>
     <string name="air_flow_max" translatable="false">300</string>
     <string name="percent" translatable="false">%</string>
+    <string name="decrement" translatable="false">-</string>
+    <string name="increment" translatable="false">+</string>
     <string name="tkm">*1000 m3/h</string>
     <string name="warning_mes_enter_between">"Enter a value between %.1f and %.1f "</string>
     <string name="warning_mes_enter_between_air">"Enter a value between %.0f and %.0f "</string>
