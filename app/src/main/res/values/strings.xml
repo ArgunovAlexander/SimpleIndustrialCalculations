@@ -1,49 +1,39 @@
 <resources>
-    <string name="app_name">Кислородный калькулятор</string>
-    <string name="choose_action">Выбор расчета</string>
-    <string name="oxy_flow">Расход кислорода </string>
-    <string name="oxy_conc">Концентрация кислорода </string>
-    <string name="air_loss">Потери дутья </string>
-    <string name="result">Результат </string>
-
-    <string name="chooser">Выберите почтовую программу</string>
-    <string name="subject">Параметры дутья по ДП-</string>
-
-
-    <string name="find_oxy_flow">Рассчитать расход О2 </string>
-    <string name="find_oxy_conc">Рассчитать содержание О2 </string>
-    <string name="find_air_dissipation">Рассчитать потери дутья </string>
-
-    <string name="enter_oxyConc">Введите содержание кислорода в дутье, % </string>
-    <string name="enter_air_flow">Введите расход доменного дутья, тыс.м3/ч </string>
-    <string name="enter_oxy_in_air_conc">Введите содержание воздуха в атмосферном воздухе, % </string>
-    <string name="enter_oxy_purity">Введите содержание кислорода в кислороде (чистоту), % </string>
-
-
-    <string name="oxy_flow_by_default">3</string>
-    <string name="air_flow_by_default">200</string>
-    <string name="oxy_in_air_by_default">20.7</string>
-    <string name="furnace_oxy_conc_by_default">20.8</string>
-    <string name="oxy_purity_by_default">99.5</string>
-    <string name="oxy_conc_by_default">22</string>
-
-
-    <string name="air_flow">Расход доменного дутья </string>
-    <string name="enrich_air_oxy_conc">Содержание кислорода в дутье </string>
-    <string name="message">Вы забыли ввести данные. Введите данные. Допускаются цифры и точка</string>
-    <string name="oxy_conc_dp">Содержание кислорода в дутье по прибору на ДП</string>
-
-    <string name="find_detailed">Уточнить расчет</string>
-
-    <string name="intro">Объемная концентрация кислорода в воздухе незначительно
-        колеблется. Локальные изменения содержания О2 происходят в местах крупных пожаров,
-        в местах забора воздуха крупными промпредприятиями и т.п.
-        \n\nЧистота технического кислорода должна быть не менее 99,5%, технологического - 95%</string>
-    <string name="intro_detailed">При сжатии воздуха часть его теряется в компрессоре
-        и по воздуховоду, часть - на клапанах СНОРТ, ППК и т.п.
-        Кислород добавляется в воздух на всасе компрессора, т.е. разбавляется большим количеством
-        воздуха, чем получает доменная печь. По этой причине содержание кислорода на печи меньше
-        расчетного.
-     </string>
-
+    <string name="app_name">Oxygen Calculator</string>
+    <string name="choose_action">Choose calculator</string>
+    <string name="oxy_conc">Oxygen concentration</string>
+    <string name="chooser">Choose email app</string>
+    <string name="enter_oxy_in_air_conc">"Enter oxygen in air concentration (by the furnace's measurer when oxygen closed, % "</string>
+    <string name="enter_oxy_purity">"Enter oxy purity, % "</string>
+    <string name="oxy_flow_by_default" translatable="false">3</string>
+    <string name="air_flow_by_default" translatable="false">200</string>
+    <string name="oxy_in_air_by_default" translatable="false">20.7</string>
+    <string name="furnace_oxy_conc_by_default" translatable="false">21.8</string>
+    <string name="oxy_purity_by_default" translatable="false">99.5</string>
+    <string name="oxy_conc_by_default" translatable="false">22</string>
+    <string name="air_flow_max" translatable="false">300</string>
+    <string name="percent" translatable="false">%</string>
+    <string name="tkm">*1000 m3/h</string>
+    <string name="warning_mes_enter_between">"Enter a value between %.1f and %.1f "</string>
+    <string name="warning_mes_enter_between_air">"Enter a value between %.0f and %.0f "</string>
+    <string name="warning_text">"Air loss is greater then air production. Enter a value between %.1f%% and %.1f%%"</string>
+    <string name="air_flow">Blast furnace air flow</string>
+    <string name="oxy_conc_dp">Oxy in blast furnace air concentration by the furnace measurer</string>
+    <string name="send">send</string>
+    <string name="back_to_menu">back to menu</string>
+    <string name="oxy_flow">Oxygen Flow</string>
+    <string name="oxy_purity">Oxygen purity</string>
+    <string name="oxy_in_air">Oxygen in atmosphere concentration</string>
+    <string name="air_loss">Blast Furnace Air loss</string>
+    <string name="result">Result</string>
+    <string name="subject">Blast Firnace Air parameters</string>
+    <string name="find_oxy_flow">Calculate oxygen flow</string>
+    <string name="find_oxy_conc">Calculate oxygen concentration</string>
+    <string name="find_air_dissipation">Calculate air loss</string>
+    <string name="enter_air_flow">Enter blast funace flow, *1000 m3/h</string>
+    <string name="enter_oxyConc">Enter oxygen in blast furnace air concentration, %</string>
+    <string name="to_default_button">to default</string>
+    <string name="enter_oxyFlow">Enter oxy flow, *1000 m3/h</string>
+    <string name="intro_detailed">There is air loss in the kompressor and thought SNORT etc. Thats why oxygen concentration calculated with air flow on the furnace seems to be larger than it is.</string>
+    <string name="enter_oxyConc_furnace">Enter oxygen in blast furnace air concentration by furnace measurer, %</string>
 </resources>

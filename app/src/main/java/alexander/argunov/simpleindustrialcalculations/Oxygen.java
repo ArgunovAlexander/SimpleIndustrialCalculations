@@ -22,61 +22,60 @@ class Oxygen implements Serializable {
         airDissipation = 0;
     }
 
-    public double getAirDissipation() {
+    double getAirDissipation() {
         return airDissipation;
     }
 
-    public double getOxyConc() {
+    double getOxyConc() {
         return oxyConc;
     }
 
-    public void setOxyConc(double oxyConc) {
+    void setOxyConc(double oxyConc) {
         this.oxyConc = oxyConc;
     }
 
-    public double getOxyFlow() {
+    double getOxyFlow() {
         return oxyFlow;
     }
 
-    public void setOxyFlow(double oxyFlow) {
+    void setOxyFlow(double oxyFlow) {
         this.oxyFlow = oxyFlow;
     }
 
-    public double getOxyInAir() {
+    double getOxyInAir() {
         return oxyInAir;
     }
 
-    public void setOxyInAir(double oxyInAir) {
+    void setOxyInAir(double oxyInAir) {
         this.oxyInAir = oxyInAir;
     }
 
-    public double getOxyPurity() {
+    double getOxyPurity() {
         return oxyPurity;
     }
 
-    public void setOxyPurity(double oxyPurity) {
+    void setOxyPurity(double oxyPurity) {
         this.oxyPurity = oxyPurity;
     }
 
-    public double getAirFlow() {
+    double getAirFlow() {
         return airFlow;
     }
 
-    public void setAirFlow(double airFlow) {
+    void setAirFlow(double airFlow) {
         this.airFlow = airFlow;
     }
 
-    public double getFurnaceOxyConc() {
+    double getFurnaceOxyConc() {
         return furnaceOxyConc;
     }
 
-    public void setFurnaceOxyConc(double furnaceOxyConc) {
+    void setFurnaceOxyConc(double furnaceOxyConc) {
         this.furnaceOxyConc = furnaceOxyConc;
     }
 
-    double calcOxyFlow() {
+    void calcOxyFlow() {
         oxyFlow = (airFlow * (oxyConc - oxyInAir)) / (oxyPurity - oxyInAir);
-        return oxyFlow;
     }
 
     double calcOxyConc() {
@@ -89,5 +88,13 @@ class Oxygen implements Serializable {
     double calcAirDissipation() {
         airDissipation = oxyFlow * (oxyPurity - oxyInAir) / (furnaceOxyConc - oxyInAir) - airFlow;
         return airDissipation;
+    }
+
+    double calcMinFurnaceOxyConc() {
+        double maxAirFlowOnKompresssor = R.string.air_flow_max;
+        double oxygenInAir = maxAirFlowOnKompresssor * oxyInAir / 100;
+        double oxygenInOxygen = oxyFlow * oxyPurity / 100;
+        return (oxygenInAir + oxygenInOxygen) / (maxAirFlowOnKompresssor + oxyFlow) * 100;
+
     }
 }

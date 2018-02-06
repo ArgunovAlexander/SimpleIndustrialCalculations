@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
@@ -18,21 +19,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MenuActivity"
-            android:label="@string/choose_action" />
+            android:label="@string/choose_action"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".CalcOxyFlow"
-            android:label="@string/oxy_flow" />
+            android:label="@string/oxy_flow"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".CalcOxyConc"
-            android:label="@string/oxy_conc" />
+            android:label="@string/oxy_conc"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".DetailedSolution"
-            android:label="@string/air_loss" />
+            android:label="@string/air_loss"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".Answer"
-            android:label="@string/result" />
+            android:label="@string/result"
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 
 </manifest>

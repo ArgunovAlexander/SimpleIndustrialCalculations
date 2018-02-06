@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -69,14 +68,7 @@ public class CalcOxyFlow extends AppCompatActivity {
 
     }
 
-    private void hideKeyboard() {
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm =
-                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-    }
+
 
     class StepperInputListener implements View.OnClickListener {
         EditText editText;
@@ -91,7 +83,6 @@ public class CalcOxyFlow extends AppCompatActivity {
             incrementView();
         }
         private void incrementView() {
-            hideKeyboard();
             double value=Double.valueOf(editText.getText().toString());
             value+=step;
             editText.setText(format(Locale.US,format,value));
@@ -123,13 +114,14 @@ public class CalcOxyFlow extends AppCompatActivity {
             //textviews to display warning message if entered number is out of range
             TextView warningOxyConc = findViewById(R.id.warning_oxyConc);
             TextView warningAirFlow = findViewById(R.id.warning_airFlow);
-            warningOxyConc.setText("");
-            warningAirFlow.setText("");
             o = (Oxygen) getIntent().getSerializableExtra("OxygenObject");
             double oxyConc = OxyTools.setParam(inputOxyConc);
             double airFlow = OxyTools.setParam(inputAirFlow);
-            if (OxyTools.isCorrect(oxyConc, o.getOxyInAir(), o.getOxyPurity(), warningOxyConc)
-                    && OxyTools.isCorrect(airFlow, 100, 300, warningAirFlow)) {
+            String message = getString(R.string.warning_mes_enter_between);
+            String messageAir = getString(R.string.warning_mes_enter_between_air);
+
+            if (OxyTools.isCorrect(oxyConc, o.getOxyInAir(), o.getOxyPurity(), warningOxyConc, message)
+                    && OxyTools.isCorrect(airFlow, 100, 300, warningAirFlow, messageAir)) {
                 o.setOxyConc(oxyConc);
                 o.setAirFlow(airFlow);
                 o.calcOxyFlow();

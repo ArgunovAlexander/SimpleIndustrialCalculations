@@ -8,7 +8,6 @@
     tools:context=".Answer">
 
     <ImageView
-        android:id="@+id/intro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"

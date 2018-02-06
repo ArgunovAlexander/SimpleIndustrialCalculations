@@ -1,12 +1,10 @@
 package alexander.argunov.simpleindustrialcalculations;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -62,12 +60,11 @@ public class CalcOxyConc extends AppCompatActivity {
                 //textviews to display warning message if entered number is out of range
                 TextView warningOxyFlow=findViewById(R.id.warning_oxyFlow);
                 TextView warningAirFlow=findViewById(R.id.warning_airFlow);
-                warningOxyFlow.setText("");
-                warningAirFlow.setText("");
                 o=(Oxygen) getIntent().getSerializableExtra("OxygenObject");
                 double oxyFlow = OxyTools.setParam(inputOxyFlow);
                 double airFlow = OxyTools.setParam(inputAirFlow);
-                if (OxyTools.isCorrect(oxyFlow,0,40,warningOxyFlow)&&OxyTools.isCorrect(airFlow,100,300,warningAirFlow)) {
+                String messageAir = getString(R.string.warning_mes_enter_between_air);
+                if (OxyTools.isCorrect(oxyFlow, 0, 40, warningOxyFlow, messageAir) && OxyTools.isCorrect(airFlow, 100, 300, warningAirFlow, messageAir)) {
                     o.setOxyFlow(oxyFlow);
                     o.setAirFlow(airFlow);
                     o.calcOxyConc();
@@ -76,15 +73,6 @@ public class CalcOxyConc extends AppCompatActivity {
                 }
             }
         });
-
-    }
-
-    private void hideKeyboard() {
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
     }
 
     class StepperInputListener implements View.OnClickListener {
@@ -100,7 +88,6 @@ public class CalcOxyConc extends AppCompatActivity {
             incrementView();
         }
         private void incrementView() {
-            hideKeyboard();
             double value=Double.valueOf(editText.getText().toString());
             value+=step;
             editText.setText(format(Locale.US,format,value));

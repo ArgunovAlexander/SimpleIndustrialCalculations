@@ -1,12 +1,11 @@
 package alexander.argunov.simpleindustrialcalculations;
 
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -79,10 +78,6 @@ public class DetailedSolution extends AppCompatActivity {
                 TextView warningOxyFlow = findViewById(R.id.warning_oxyFlow);
                 TextView warningAirFlow = findViewById(R.id.warning_airFlow);
                 TextView warningOxyConc = findViewById(R.id.warning_oxyConc);
-                //set warning messages to empty field
-                warningOxyFlow.setText("");
-                warningAirFlow.setText("");
-                warningOxyConc.setText("");
                 //get doubles from input views
                 double oxyFlow = OxyTools.setParam(inputOxyFlow);
                 double airFlow = OxyTools.setParam(inputAirFlow);
@@ -91,31 +86,29 @@ public class DetailedSolution extends AppCompatActivity {
                 o.setOxyFlow(oxyFlow);
                 o.setAirFlow(airFlow);
                 o.setFurnaceOxyConc(furnaceOxyConc);
+                String message = getString(R.string.warning_mes_enter_between);
+                String messageAir = getString(R.string.warning_mes_enter_between_air);
                 //checking if doubles from input views are correct
                 // and display warning message if they are not
                 //then put extra to the intent and start Answer activity
-                if (OxyTools.isCorrect(oxyFlow, 0, 40, warningOxyFlow) &&
-                        OxyTools.isCorrect(airFlow, 100, 300, warningAirFlow) &&
-                        OxyTools.isCorrect(furnaceOxyConc, o.getOxyInAir(), o.calcOxyConc(), warningOxyConc)) {
-                    o.calcOxyConc();
-                    if (o.calcAirDissipation() + o.getAirFlow() < 300) {
+                if (OxyTools.isCorrect(oxyFlow, 0, 40, warningOxyFlow, messageAir) &&
+                        OxyTools.isCorrect(airFlow, 100, 300, warningAirFlow, messageAir) &&
+                        OxyTools.isCorrect(furnaceOxyConc, oxyInAir, o.calcOxyConc(), warningOxyConc, message)) {
+                    if (o.calcAirDissipation() + airFlow < 300) {
                         intent.putExtra("oxygenObjectTwo", o);
                         startActivity(intent);
                     } else {
-                        warningOxyConc.setText("При таком проценте потери превышают выработку дутья. Процент должен быть выше, но не более " + String.format(Locale.US, "%.1f", o.getOxyConc()));
+                        warningOxyConc.setVisibility(View.VISIBLE);
+                        warningOxyConc.setTextColor(Color.parseColor("#F44336"));
+                        double minOxyFurnacePercent = o.calcMinFurnaceOxyConc();
+                        String warningMessage = format(getString(R.string.warning_text), minOxyFurnacePercent, o.getOxyConc());
+                        warningOxyConc.setText(warningMessage);
                     }
                 }
             }
         });
     }
 
-    private void hideKeyboard() {
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-    }
 
     class StepperInputListener implements View.OnClickListener {
         EditText editText;
@@ -133,7 +126,6 @@ public class DetailedSolution extends AppCompatActivity {
         }
 
         private void incrementView() {
-            hideKeyboard();
             double value = Double.valueOf(editText.getText().toString());
             value += step;
             editText.setText(format(Locale.US, format, value));

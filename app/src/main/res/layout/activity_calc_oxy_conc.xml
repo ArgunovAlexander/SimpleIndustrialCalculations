@@ -16,7 +16,7 @@
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:scaleType="centerInside"
-            android:src="@drawable/middle_banner" />
+            android:src="@drawable/middle_banner_conc" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        android:text="Введите расход кислорода"
+        android:text="@string/enter_oxyFlow"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
     <LinearLayout
@@ -78,7 +78,7 @@
             android:layout_marginLeft="8dp"
             android:background="#e0e0e0"
             android:padding="8dp"
-            android:text="сбросить"
+            android:text="@string/to_default_button"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
             android:visibility="visible"
@@ -157,7 +157,7 @@
             android:layout_marginLeft="8dp"
             android:background="#e0e0e0"
             android:padding="8dp"
-            android:text="сбросить"
+            android:text="@string/to_default_button"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
             android:visibility="visible"

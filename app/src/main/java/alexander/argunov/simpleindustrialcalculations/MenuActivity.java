@@ -1,11 +1,10 @@
 package alexander.argunov.simpleindustrialcalculations;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -13,17 +12,15 @@ import java.util.Locale;
 
 import static java.lang.String.format;
 
-public class MenuActivity extends Activity {
+public class MenuActivity extends AppCompatActivity {
     EditText inputOxyPurity;
     EditText inputOxyInAirPerc;
     Oxygen o;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        hideKeyboard();
 
         //assigning input EditTexts to value
         inputOxyPurity = findViewById(R.id.inputOxyPurity);
@@ -47,8 +44,8 @@ public class MenuActivity extends Activity {
         //set default values
         String oxyPurityByDefault = getString(R.string.oxy_purity_by_default);
         String OxyInAirByDefault = getString(R.string.oxy_in_air_by_default);
-        inputOxyPurity.setText(oxyPurityByDefault);
         inputOxyInAirPerc.setText(OxyInAirByDefault);
+        inputOxyPurity.setText(oxyPurityByDefault);
 
 
         incrOxyInAir.setOnClickListener(new StepperInputListener(inputOxyInAirPerc, 0.1d, "%.1f"));
@@ -62,14 +59,7 @@ public class MenuActivity extends Activity {
         oxyFlow.setOnClickListener(new ButtonsListener(this, CalcOxyFlow.class));
         oxyConc.setOnClickListener(new ButtonsListener(this, CalcOxyConc.class));
         airLoss.setOnClickListener(new ButtonsListener(this, DetailedSolution.class));
-    }
 
-    private void hideKeyboard() {
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
     }
 
     class StepperInputListener implements View.OnClickListener {
@@ -88,7 +78,6 @@ public class MenuActivity extends Activity {
         }
 
         private void incrementView() {
-            hideKeyboard();
             double value = Double.valueOf(editText.getText().toString());
             value += step;
             editText.setText(format(Locale.US, format, value));
@@ -109,10 +98,8 @@ public class MenuActivity extends Activity {
             double oxyPer = Double.valueOf(inputOxyInAirPerc.getText().toString());
             TextView warningOxyPurity = findViewById(R.id.warning_oxyPurity);
             TextView warningOxyInAir = findViewById(R.id.warning_oxyInAir);
-            warningOxyInAir.setText("");
-            warningOxyPurity.setText("");
-
-            if (OxyTools.isCorrect(oxyPur, 20, 99.9f, warningOxyPurity) && OxyTools.isCorrect(oxyPer, 20, 22, warningOxyInAir)) {
+            String message = getString(R.string.warning_mes_enter_between);
+            if (OxyTools.isCorrect(oxyPur, 20, 99.9f, warningOxyPurity, message) && OxyTools.isCorrect(oxyPer, 20, 22, warningOxyInAir, message)) {
                 Intent intent = new Intent(packageContext, cls);
                 o = new Oxygen();
                 o.setOxyPurity(oxyPur);

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Расчеты с кислородом</string>
+    <string name="oxy_conc_dp">Содержание О2 в дутье по прибору на ДП</string>
+    <string name="oxy_purity">Чистота кислорода</string>
+    <string name="oxy_in_air">Содержание кислорода в атмосфере</string>
+    <string name="choose_action">Выберите калькулятор</string>
+    <string name="oxy_flow">Расход кислорода</string>
+    <string name="air_flow">"Расход доменного дутья "</string>
+    <string name="oxy_conc">Содержание кислорода</string>
+    <string name="air_loss">Потери дутья</string>
+    <string name="result">Результат</string>
+    <string name="chooser">Выберите почтовую программу</string>
+    <string name="subject">Параметры дутья по ДП</string>
+    <string name="find_oxy_flow">Рассчитать расход О2</string>
+    <string name="find_oxy_conc">Рассчитать содержание О2</string>
+    <string name="find_air_dissipation">Рассчитать потери дутья</string>
+    <string name="enter_oxyConc">Введите содержание кислорода в дутье, %</string>
+    <string name="enter_oxyFlow">Введите расход кислорода, тыс.м3/ч</string>
+    <string name="enter_oxyConc_furnace">Введите содержание кислорода в дутье по прибору на ДП, %</string>
+    <string name="enter_air_flow">Введите расход доменного дутья, тыс.м3/ч</string>
+    <string name="enter_oxy_in_air_conc">Введите содержание О2 в атмосфере(содержание О2 в дутье по прибору на печи, когда кислород закрыт), %</string>
+    <string name="enter_oxy_purity">Введите содержание кислорода в кислороде (чистоту), %</string>
+    <string name="warning_mes_enter_between">"Введите число между %.1f и %.1f "</string>
+    <string name="warning_mes_enter_between_air">"Введите число между %.0f и %.0f "</string>
+    <string name="warning_text">Потери дутья превышают его производство. Введите значение между %.1f%% и %.1f%%</string>
+    <string name="to_default_button">Сбросить</string>
+    <string name="intro_detailed">"При сжатии воздуха часть его теряется в компрессоре и по воздуховоду, часть - на клапанах СНОРТ, ППК и т.п. Кислород добавляется в воздух на всасе компрессора, т.е. разбавляется большим количеством воздуха, чем получает доменная печь. По этой причине содержание кислорода на печи меньше расчетного."</string>
+    <string name="tkm">тыс.м3/ч</string>
+    <string name="send">Отправить</string>
+    <string name="back_to_menu">Вернуться в меню</string>
+</resources>

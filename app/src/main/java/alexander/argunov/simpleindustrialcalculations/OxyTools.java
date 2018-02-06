@@ -7,28 +7,29 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-import static java.lang.String.format;
+class OxyTools {
 
-public class OxyTools {
     static double setParam(EditText editText) {
         return isEmpty(editText) ? 0 :Double.valueOf(editText.getText().toString()) ;
     }
 
-    static boolean isEmpty(EditText editText) {
+    private static boolean isEmpty(EditText editText) {
         return  (editText.getText().toString().trim().length() <= 0);
     }
 
-    static boolean isCorrect(double value, double min, double max, TextView textView) {
+    static boolean isCorrect(double value, double min, double max, TextView textView, String warningMessage) {
+        textView.setVisibility(View.GONE);
         if (value<min||value>max) {
             textView.setTextColor(Color.parseColor("#F44336"));
-            textView.setText(format(Locale.US,"Введите число между %1$.1f и %2$.1f ",min,max));
+            warningMessage = String.format(warningMessage, min, max);
+            textView.setText(warningMessage);
             textView.setVisibility(View.VISIBLE);
             return false;
         }
         return true;
     }
 
-    static String printParam(String formattedMessage, double param) {
+    private static String printParam(String formattedMessage, double param) {
         return (param != 0) ? String.format(Locale.US, formattedMessage, param) + "\n" : "";
     }
 
@@ -44,4 +45,5 @@ public class OxyTools {
 
         return message;
     }
+
 }

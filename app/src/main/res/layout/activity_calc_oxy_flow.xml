@@ -12,13 +12,12 @@
     <!--find oxygen flow-->
 
         <ImageView
-            android:id="@+id/intro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:scaleType="centerInside"
-            android:src="@drawable/middle_banner" />
+            android:src="@drawable/middle_banner_flow" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -81,7 +80,7 @@
             android:layout_marginLeft="8dp"
             android:background="#e0e0e0"
             android:padding="8dp"
-            android:text="сбросить"
+            android:text="@string/to_default_button"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
             android:visibility="visible"
@@ -158,7 +157,7 @@
             android:layout_marginLeft="8dp"
             android:background="#e0e0e0"
             android:padding="8dp"
-            android:text="сбросить"
+            android:text="@string/to_default_button"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
             android:visibility="visible"
